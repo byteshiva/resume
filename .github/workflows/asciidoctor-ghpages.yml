@@ -27,5 +27,5 @@ jobs:
         asciidoctor_params: --attribute=nofooter
         pdf_build: true
         ebook_main_adoc_file: 'latest'
-        post_build: 'cp -f latest.html index.html; git add -f index.html'
+        post_build: 'asciidoctor latest.adoc -o index.html'
 
