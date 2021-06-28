@@ -24,9 +24,8 @@ jobs:
     - name: asciidoctor-ghpages
       uses: manoelcampos/asciidoctor-ghpages-action@v2
       with:
-        asciidoctor_params: --attribute=nofooter -a pdf-stylesdir=themes -a pdf-style=resume -a pdf-fontsdir=fonts 
+        asciidoctor_params: --attribute=nofooter
         pdf_build: true
-        slides_main_adoc_file: 'latest'
         ebook_main_adoc_file: 'latest'
-        slides_build: true
-        post_build: 'echo "Custom post command executed #1 ."'
+        post_build: 'cp -f latest.html index.html; git add -f index.html'
+
