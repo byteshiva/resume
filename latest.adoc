@@ -128,7 +128,7 @@ Anna University, Chennai, TamilNadu, India
 
 == Certifications
 [horizontal]
-AWS Certified Developer -- Associate 2018 :: PSI Services LLC +
+AWS Certified Developer -- Associate 2018 +
 
 [horizontal]
 Programming Mobile Services for Android Handheld Systems -- Comunication 2016 :: Corsera Course Certificates +
