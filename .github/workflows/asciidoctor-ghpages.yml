@@ -1,0 +1,32 @@
+name: asciidoctor-ghpages
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+      
+    # Includes the AsciiDoctor GitHub Pages Action to convert adoc files to html and publish to gh-pages branch
+    - name: asciidoctor-ghpages
+      uses: manoelcampos/asciidoctor-ghpages-action@v2
+      with:
+        asciidoctor_params: --attribute=nofooter -a pdf-stylesdir=themes -a pdf-style=resume -a pdf-fontsdir=fonts 
+        pdf_build: true
+        slides_main_adoc_file: 'latest'
+        ebook_main_adoc_file: 'latest'
+        slides_build: true
+        post_build: 'echo "Custom post command executed #1 ."'

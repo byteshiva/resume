@@ -1,0 +1,143 @@
+== C SivaSubramaniyam
+:hp-tags: resume, SivaSubramaniyam, c, College of Engineering Guindy Anna university, computer science, bachelor, software, developer, engineer, polygot engineer, technical architect
+:published_at: 2021-06-28
+:author: C SivaSubramaniyam
+:doctype: article
+:encoding: UTF-8
+:lang: en
+:theme: resume
+:icons: font
+:icon-set: af
+
+Chennai, TamilNadu, India +
+mailto:byteshiva@gmail.com[],
+https://linkedin.com/in/byteshiva[@*LinkedIn*],
+https://github.com/byteshiva[@*GitHub*]
+
+== Skills
+* designing and implementing scalable products and productivity tooling
+* planning long term objectives and working with teams to accomplish goals
+* scaling existing products, performance tuning application and infrastructure
+* automating using CloudFormation, Docker, Ansible, Python, or shell scripting
+* deploying, migrating and managing Linux-based systems
+
+[%rotate,cols="4*",frame=none,grid=rows]
+|===
+
+|
+|★★★★★ (5/5)
+|★★★★☆ (4/5)
+|★★★☆☆ (3/5)
+
+|*Infrastructure*
+|CloudFormation, EC2, ECS, ElasticSearch
+|Redshift, DynamoDB, RDS, ElastiCache
+|Ansible, Vagrant, Packer, Docker
+
+|*Languages*
+|Python, Java, Bash
+|JavaScipt, NodeJS
+|
+
+|*Backend*
+|Flask, SQLAlchemy, Alembic
+|Hibernate, Liquibase, Google Web Toolkit
+|Android SDK, Spring, ExpressJS
+
+|*Frontend*
+|
+|ReactJS
+|jQuery, UIkit, VueJS, Bootstrap
+
+|*Analytics*
+|Looker
+|Kinesis, CloudWatch
+|
+
+|===
+
+== Professional Experience
+
+* 13+ years work experience as a software engineer.
+* 4+ years experience with cloud services.
+* 4+ years work experience as a Technical Architect
+
+=== Stealth Startup
+*Founder/Technical Architect*, July 2020 -- _present_
+
+*Environment:* MySQL, Java, Docker, AWS, Redis, Kafka, ElasticSearch, ReactJS, Looker
+
+* code contributor of record management system team emergency services software
+* authored ElasticSearch request for change, describing: risk, mitigation steps, short and long term goals
+* reduced ElasticSearch cluster capacity by roughly 40% (2TB+) without deleting any customer facing data
+* improved MySQL average query response time by optimizing internal notification service
+* overhauled State to Federal report exports to easily maintain code and rapidly on-board new customers
+
+<<<
+
+=== Kore.ai
+*Technical Architect*, December 2019 -- July 2020
+
+*Environment:* Python, NodeJS, ExpressJS, ReactJS, MongoDB, Looker, Heroku, Stitch, Docker, RDS
+
+* led scrum, planning, grooming and retro meetings more effectively
+* setup local development for team with docker compose and selenium end-to-end testing
+* built out new CloudFormation ECS service stack to migrate cloud providers
+* helped build new api for rent guarantee claims service
+* secured AWS account with IAM stack groups and policies
+* reduced AWS costs from $250 to $40 USD per day -- saving company more than $75,000 USD per year
+* improved looker no-SQL to SQL integration with stitch by adding MongoDB indices
+* took initiative to overhaul Looker analytics
+
+=== Target Corp
+*Lead Consultant/ Technical Architect*, August 2017 -- December 2019
+
+*Environment:* Java, Looker, CloudFormation, EC2, ElastiCache, Redshift, Kinesis, Data Pipelines, RDS, DynamoDB, Hibernate, Liquibase, Spring
+
+* automated zero-downtime deploy of rest api auto-scaling group rolling update
+* decoupled monolithic deploy: increase stability and speed for deploy during peak traffic
+* designed rolled-out company security policy for read-only and elevate user access
+* led team web frontend refactor to help deliver unified experience across company
+* replaced existing geo-location integration for improved accuracy and $100,000 USD per year in savings
+* on-schedule completion of core product: report authoring, providing customers with custom analytics
+* resolved outstanding rest api database throttling
+* built in-house tooling to improve developer and operation experience for team
+
+=== Polycom
+*Senior Staff Engineer*, January 2016 -- August 2017
+
+*Environment:* Python, Flask, SQLAlchemy, Alembic, PostgreSQL, Memcached, Redis, Ansible, Vagrant
+
+* implemented rest api ecommerce features
+* optimized offers engine and added couponing feature
+* on-call technical support for disaster recovery
+* providing hot-fix solutions to comply with service-level agreement
+* first to assess and troubleshoot issues affecting customer eCommerce experience
+* preparation and deployment of new software releases to staging and production environments
+* coordinating downtime and hardware upgrades for retailer environments
+
+<<<
+
+== Education
+[horizontal]
+Bachelor of Computer Science :: University of Madras +
+Chennai, TamilNadu, India
+Master of Software Engineerings :: College of Engineering, Guindy, +
+Anna University, Chennai, TamilNadu, India
+
+
+== Certifications
+[horizontal]
+AWS Certified Developer -- Associate 2018 :: PSI Services LLC +
+
+[horizontal]
+Programming Mobile Services for Android Handheld Systems -- Comunication 2016 :: Corsera Course Certificates +
+Participated
+
+[horizontal]
+Programming Mobile Services for Android Handheld Systems -- Part 2, 2015 :: Corsera Course Certificates +
+Participated
+
+[horizontal]
+Programming Mobile Services for Android Handheld Systems -- Part 1, 2015 :: Corsera Course Certificates +
+Participated
