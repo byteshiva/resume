@@ -28,7 +28,7 @@ jobs:
         asciidoctor_params: --attribute=nofooter
         pdf_build: true
         ebook_main_adoc_file: 'latest'
-        post_build: 'asciidoctor latest.adoc -o index.html;touch index.html; pwd; ls -lrt; git add -f index.html'
+        post_build: 'asciidoctor latest.adoc -o index.html;touch index.html; asciidoctor-pdf latest.adoc -o latest.pdf; git add -f index.html latest.pdf'
     - name: Send telegram message - hackernews
       uses: appleboy/telegram-action@v0.1.1
       with:
