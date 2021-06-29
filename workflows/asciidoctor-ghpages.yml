@@ -30,6 +30,9 @@ jobs:
         ebook_main_adoc_file: 'latest'
         post_build: 'asciidoctor latest.adoc -o index.html;touch index.html;asciidoctor-pdf -a pdf-stylesdir=themes -a pdf-style=resume -a pdf-fontsdir=fonts latest.adoc -o latest.pdf; git add -f index.html latest.pdf'
     - name: Send telegram message - hackernews
+      env:
+          telegram_text: ${{ on.telegram_bot.outputs.text }}
+          from_firstbame: ${{ on.telegram_bot.outputs.from.first_name }}
       uses: appleboy/telegram-action@v0.1.1
       with:
         to: ${{ secrets.TELEGRAM_TO }}
@@ -38,4 +41,5 @@ jobs:
         message: |
                 Welcome to telegram world!
                 more features in pipeline, NLP, Resume Parser
+                Thanks $from_firstbame, I got your message $telegram_text 
 
