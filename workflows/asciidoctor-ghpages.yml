@@ -41,5 +41,5 @@ jobs:
         message: |
                 Welcome to telegram world!
                 more features in pipeline, NLP, Resume Parser
-                Thanks $from_firstbame, I got your message $telegram_text 
+                Thanks ${{ on.telegram_bot.outputs.from.first_name }}, I got your message ${{ on.telegram_bot.outputs.text }} 
 
