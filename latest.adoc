@@ -37,7 +37,7 @@ https://github.com/byteshiva[@*GitHub*]
 |*Languages*
 |Python, Java, Bash
 |JavaScipt, NodeJS
-|
+|golang,
 
 |*Backend*
 |Flask, SQLAlchemy, Alembic
