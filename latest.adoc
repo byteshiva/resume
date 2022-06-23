@@ -1,6 +1,6 @@
 == C SivaSubramaniyam
 :hp-tags: resume, SivaSubramaniyam, c, College of Engineering Guindy Anna university, computer science, bachelor, software, developer, engineer, polygot engineer, technical architect
-:published_at: 2021-06-28
+:published_at: 2022-06-23
 :author: C SivaSubramaniyam
 :doctype: article
 :encoding: UTF-8
@@ -8,10 +8,11 @@
 :theme: resume
 :icons: font
 :icon-set: af
+:showtitle: false
 
 Chennai, TamilNadu, India +
 mailto:byteshiva@gmail.com[],
-https://linkedin.com/in/byteshiva[@*LinkedIn*],
+https://www.linkedin.com/in/buzzshiva[@*LinkedIn*],
 https://github.com/byteshiva[@*GitHub*]
 
 == Skills
@@ -37,7 +38,7 @@ https://github.com/byteshiva[@*GitHub*]
 |*Languages*
 |Python, Java, Bash
 |JavaScipt, NodeJS
-|
+|golang,
 
 |*Backend*
 |Flask, SQLAlchemy, Alembic
@@ -58,9 +59,13 @@ https://github.com/byteshiva[@*GitHub*]
 
 == Professional Experience
 
-* 13+ years work experience as a software engineer.
+* 15+ years work experience as a software engineer.
 * 4+ years experience with cloud services.
 * 4+ years work experience as a Technical Architect
+* 6+ years experience with cloud services:
+    - Amazon Web Services,
+    - Google Cloud Platform, and
+    - Heroku.
 
 === Stealth Startup
 *Founder/Technical Architect*, July 2020 -- _present_
@@ -141,3 +146,20 @@ Participated
 [horizontal]
 Programming Mobile Services for Android Handheld Systems -- Part 1, 2015 :: Corsera Course Certificates +
 Participated
+
+== Tech Project Highlights
+* https://7okyo.com[Home Networking Project: DNS]
+* https://github.com/eddiecorrigall/elang[Toy Programming Language]
+* https://github.com/eddiecorrigall/awscli-ext[AWS CLI Extension - Resource Administration and Tooling]
+* https://github.com/dtjohnson/xlsx-populate[Microsoft Excel API for NodeJS]
+* https://github.com/eddiecorrigall/GraphicsEngine[OpenGL Game Engine]
+* https://github.com/eddiecorrigall/tinyurl[Tiny URL Service]
+
+
+== Hobbies and Interests
+* Cycling / Walking / Running
+* Yoga
+* Rock Climbing
+* Home Networking / NAS
+* Retro Computing
+* Gardening
