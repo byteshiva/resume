@@ -39,7 +39,7 @@ jobs:
             });
             return runed.data.total_count
           result-encoding: string
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         if: steps.runningCount.outputs.result=='1'
       - name: Run Actionsflow
         if: steps.runningCount.outputs.result=='1'
