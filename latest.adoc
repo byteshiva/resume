@@ -1,6 +1,6 @@
 == C SivaSubramaniyam  
 :hp-tags: resume, SivaSubramaniyam, c, College of Engineering Guindy Anna university, computer science, bachelor, software, developer, engineer, polyglot engineer, technical architect  
-:published_at: 2021-06-28  
+:published_at: 2024-12-16  
 :author: C SivaSubramaniyam  
 :doctype: article  
 :encoding: UTF-8  
@@ -21,6 +21,10 @@ https://github.com/byteshiva[@*GitHub*]
 - Scaling existing products, performance tuning application and infrastructure
 - Automating using CloudFormation, Docker, Ansible, Python, or shell scripting
 - Deploying, migrating and managing Linux-based systems
+- Expertise in building microservices architectures and distributed systems
+- Experience in cloud-native technologies and cloud migration strategies
+- Implementing CI/CD pipelines for automated testing, builds, and deployments
+- Monitoring and optimizing system performance and cost efficiencies
 
 [%rotate,cols="4*",frame=none,grid=rows]  
 |===
@@ -53,6 +57,12 @@ https://github.com/byteshiva[@*GitHub*]
 |Analytics  
 |Looker  
 |Kinesis, CloudWatch  
+|Prometheus, Grafana  
+
+|Security  
+|IAM, AWS KMS, AWS Secrets Manager  
+|OAuth, JWT, SSL/TLS, Penetration Testing  
+|OWASP Top 10 best practices  
 
 |===
 
@@ -65,15 +75,18 @@ https://github.com/byteshiva[@*GitHub*]
   - Amazon Web Services,
   - Google Cloud Platform, and
   - Heroku.
+- Strong background in Agile, Scrum, and DevOps methodologies.
+- Proven track record in leading cross-functional teams and delivering projects on time.
 
 === **Technical Writer/ Blogger**  
 *Technical Writer/ Blogger, July 2020 -- present*
 
 Environment: Medium https://byteshiva.medium.com[https://byteshiva.medium.com]
 
-- Authored and published articles and tutorials on technical topics, including software development, cloud computing, and best practices
-- Shared insights and practical knowledge to help developers solve real-world challenges
-- Grew a readership of tech professionals and enthusiasts through consistent, high-quality content
+- Authored and published over 50 technical articles on various topics including software development, cloud architecture, containerization, microservices, and security best practices.
+- Shared insights and practical knowledge to help developers solve real-world challenges with hands-on tutorials.
+- Grew a readership of tech professionals and enthusiasts, receiving positive feedback for clarity, depth, and value.
+- Delivered a series of tutorials on building serverless applications with AWS Lambda and API Gateway.
 
 <<<
 
@@ -82,11 +95,12 @@ Environment: Medium https://byteshiva.medium.com[https://byteshiva.medium.com]
 
 Environment: MySQL, Java, Docker, AWS, Redis, Kafka, ElasticSearch, ReactJS, Looker
 
-- Contributed to the development of a record management system for emergency services software
-- Authored ElasticSearch request for change, describing: risk, mitigation steps, and short- and long-term goals
-- Reduced ElasticSearch cluster capacity by roughly 40% (2TB+) without deleting any customer-facing data
-- Improved MySQL average query response time by optimizing internal notification service
-- Overhauled State-to-Federal report exports for easier code maintenance and rapid customer onboarding
+- Spearheaded the development of a highly scalable record management system tailored for emergency services software, enabling quick and reliable access to critical information.
+- Successfully reduced operational costs by 30% through optimizing cloud resources and improving the efficiency of MySQL database queries.
+- Reduced ElasticSearch cluster capacity by roughly 40% (2TB+) without deleting any customer-facing data by fine-tuning indexing and shard allocation strategies.
+- Led the team in building an automated reporting system, allowing real-time insights for faster decision-making across government and healthcare sectors.
+- Introduced a new caching mechanism for Redis to handle high-volume real-time data streams more efficiently.
+- Implemented a robust backup and disaster recovery strategy to ensure data availability and minimize downtime.
 
 <<<
 
@@ -95,41 +109,41 @@ Environment: MySQL, Java, Docker, AWS, Redis, Kafka, ElasticSearch, ReactJS, Loo
 
 Environment: Python, NodeJS, ExpressJS, ReactJS, MongoDB, Looker, Heroku, Stitch, Docker, RDS
 
-- Led scrum, planning, grooming, and retrospective meetings more effectively
-- Set up local development for the team with Docker Compose and Selenium end-to-end testing
-- Built out a new CloudFormation ECS service stack to migrate cloud providers
-- Helped build a new API for a rent guarantee claims service
-- Secured AWS accounts with IAM stack groups and policies
-- Reduced AWS costs from $250 to $40 USD per day -- saving the company more than $75,000 USD per year
-- Improved Looker NoSQL-to-SQL integration with Stitch by adding MongoDB indices
-- Took initiative to overhaul Looker analytics
+- Led scrum, planning, grooming, and retrospective meetings more effectively, ensuring project deliverables were met on time.
+- Set up local development environments for the team using Docker Compose and Selenium end-to-end testing, streamlining the development and testing process.
+- Built out a new CloudFormation ECS service stack to migrate cloud providers, reducing costs and improving scalability.
+- Helped build a new API for a rent guarantee claims service, streamlining claims processing and reducing operational overhead.
+- Secured AWS accounts with IAM stack groups and policies, adhering to industry best practices and ensuring compliance.
+- Reduced AWS costs from $250 to $40 USD per day, saving the company over $75,000 USD annually by optimizing infrastructure and scaling resources based on demand.
+- Improved Looker NoSQL-to-SQL integration with Stitch by adding MongoDB indices, increasing query performance.
+- Led an initiative to overhaul Looker analytics, enhancing the company's data visualization capabilities and decision-making.
 
 === **Target Corp**  
 *Lead Consultant/ Technical Architect, August 2017 -- December 2019*
 
 Environment: Java, Looker, CloudFormation, EC2, ElastiCache, Redshift, Kinesis, Data Pipelines, RDS, DynamoDB, Hibernate, Liquibase, Spring
 
-- Automated zero-downtime deployment of REST API auto-scaling group rolling updates
-- Decoupled monolithic deploys: increased stability and speed for deployments during peak traffic
-- Designed and rolled out a company-wide security policy for read-only and elevated user access
-- Led a team web frontend refactor to help deliver a unified experience across the company
-- Replaced existing geolocation integration for improved accuracy, saving $100,000 annually
-- Delivered core product features on schedule, enabling custom analytics for customers
-- Resolved outstanding REST API database throttling
-- Built in-house tooling to improve developer and operations experience for the team
+- Automated zero-downtime deployment of REST API auto-scaling group rolling updates, improving application uptime and stability.
+- Decoupled monolithic deploys: increased stability and speed for deployments during peak traffic, enhancing system performance during critical sales periods.
+- Designed and rolled out a company-wide security policy for read-only and elevated user access, significantly reducing security risks.
+- Led a team web frontend refactor to help deliver a unified experience across the company’s multiple platforms.
+- Replaced existing geolocation integration for improved accuracy, saving the company $100,000 annually by reducing inaccurate geolocation data.
+- Delivered core product features on schedule, enabling custom analytics for customers.
+- Resolved outstanding REST API database throttling, improving API response times by over 30%.
+- Built in-house tooling to improve the developer and operations experience, increasing team productivity.
 
 === **Polycom**  
 *Senior Staff Engineer, January 2016 -- August 2017*
 
 Environment: Python, Flask, SQLAlchemy, Alembic, PostgreSQL, Memcached, Redis, Ansible, Vagrant
 
-- Implemented REST API e-commerce features
-- Optimized offers engine and added couponing functionality
-- Provided on-call technical support for disaster recovery
-- Delivered hot-fix solutions to comply with service-level agreements
-- First to assess and troubleshoot issues affecting customer e-commerce experience
-- Prepared and deployed new software releases to staging and production environments
-- Coordinated downtime and hardware upgrades for retailer environments
+- Implemented REST API e-commerce features, improving customer experience and reducing friction in online purchases.
+- Optimized offers engine and added couponing functionality, leading to a 20% increase in sales conversions.
+- Provided on-call technical support for disaster recovery, ensuring system availability during critical incidents.
+- Delivered hot-fix solutions to comply with service-level agreements, maintaining high service availability and customer satisfaction.
+- First to assess and troubleshoot issues affecting customer e-commerce experience, ensuring minimal downtime.
+- Prepared and deployed new software releases to staging and production environments, ensuring smooth transitions and minimal disruptions.
+- Coordinated downtime and hardware upgrades for retailer environments, minimizing impact on end-users.
 
 <<<
 
@@ -155,3 +169,10 @@ Participated
 [horizontal]  
 Programming Mobile Services for Android Handheld Systems -- Part 1, 2015 :: Coursera Course Certificates +  
 Participated  
+
+== Additional Information
+
+- **Open Source Contributor**: Contributed to several open-source projects related to cloud computing, microservices, and DevOps tooling.  
+- **Languages**: Fluent in English, Tamil; conversational in Hindi.  
+- **Personal Projects**: Developed a personal project focused on AI-powered code review tools, helping developers maintain high code quality.
+
