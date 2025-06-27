@@ -1,3 +1,4 @@
+
 == C SivaSubramaniyam  
 :hp-tags: resume, SivaSubramaniyam, c, College of Engineering Guindy Anna university, computer science, bachelor, software, developer, engineer, polyglot engineer, technical architect  
 :published_at: 2024-12-16  
@@ -16,15 +17,14 @@ https://github.com/byteshiva[@*GitHub*]
 
 == Skills
 
-- Designing and implementing scalable products and productivity tooling
-- Planning long-term objectives and working with teams to accomplish goals
-- Scaling existing products, performance tuning application and infrastructure
-- Automating using CloudFormation, Docker, Ansible, Python, or shell scripting
-- Deploying, migrating and managing Linux-based systems
-- Expertise in building microservices architectures and distributed systems
-- Experience in cloud-native technologies and cloud migration strategies
-- Implementing CI/CD pipelines for automated testing, builds, and deployments
-- Monitoring and optimizing system performance and cost efficiencies
+- AI/ML (GPT-4, Claude), TensorFlow, PyTorch
+- WebAssembly, WASI, Firecracker MicroVMs, Rust/C++
+- Cloud-native platforms (AWS, GCP, Lambda@Edge, Kubernetes)
+- FinTech systems (PCI-DSS, Kafka), HIPAA-compliant healthcare APIs
+- Scalable platform design, NLP/NLU pipelines, LLM-powered services
+- Developer experience: CI/CD, observability, DevOps automation
+- Open Source evangelism: CNCF, Cilium contributor
+- Public writing: byteshiva.medium.com, github.com/byteshiva
 
 [%rotate,cols="4*",frame=none,grid=rows]  
 |===
@@ -34,118 +34,96 @@ https://github.com/byteshiva[@*GitHub*]
 |★★★★☆ (4/5)  
 |★★★☆☆ (3/5)  
 
-|Infrastructure  
-|CloudFormation, EC2, ECS, ElasticSearch  
-|Redshift, DynamoDB, RDS, ElastiCache  
-|Ansible, Vagrant, Packer, Docker  
+|AI & ML  
+|LLMs (GPT-4, Claude)  
+|PyTorch, TensorFlow  
+|NLP/NLU  
 
 |Languages  
-|Python, Java, Bash  
-|JavaScript, NodeJS  
-|Go  
+|Go, Python, Rust  
+|Bash, PHP  
+|JavaScript  
 
 |Backend  
-|Flask, SQLAlchemy, Alembic  
-|Hibernate, Liquibase, Google Web Toolkit  
-|Android SDK, Spring, ExpressJS  
+|Serverless (WASM, Lambda)  
+|Firecracker, Docker, WASI  
+|Microservices  
 
 |Frontend  
-|  
-|ReactJS  
-|jQuery, UIkit, VueJS, Bootstrap  
+|React, Bootstrap  
+|Tailwind  
+|jQuery  
 
-|Analytics  
-|Looker  
-|Kinesis, CloudWatch  
-|Prometheus, Grafana  
+|Cloud & Infra  
+|AWS/GCP, NixOS  
+|Kubernetes, Docker  
+|CI/CD, Observability  
 
 |Security  
-|IAM, AWS KMS, AWS Secrets Manager  
-|OAuth, JWT, SSL/TLS, Penetration Testing  
-|OWASP Top 10 best practices  
+|HIPAA, PCI-DSS  
+|Zero-trust (WASI, sandboxing)  
+|OAuth2, TLS, CVE-free deployments  
 
 |===
 
 == Professional Experience
 
-- **15+ years** work experience as a software engineer.
-- **4+ years** experience with cloud services.
-- **4+ years** work experience as a Technical Architect.
-- **6+ years** experience with cloud services:
-  - Amazon Web Services,
-  - Google Cloud Platform, and
-  - Heroku.
-- Strong background in Agile, Scrum, and DevOps methodologies.
-- Proven track record in leading cross-functional teams and delivering projects on time.
-
-=== **Technical Writer/ Blogger**  
-*Technical Writer/ Blogger, July 2020 -- present*
-
-Environment: Medium https://byteshiva.medium.com[https://byteshiva.medium.com]
-
-- Authored and published over 50 technical articles on various topics including software development, cloud architecture, containerization, microservices, and security best practices.
-- Shared insights and practical knowledge to help developers solve real-world challenges with hands-on tutorials.
-- Grew a readership of tech professionals and enthusiasts, receiving positive feedback for clarity, depth, and value.
-- Delivered a series of tutorials on building serverless applications with AWS Lambda and API Gateway.
-
-<<<
-
 === **Stealth Startup**  
-*Founder/Technical Architect, July 2020 -- present*
+*Director of Engineering, 2018 -- Present*
 
-Environment: MySQL, Java, Docker, AWS, Redis, Kafka, ElasticSearch, ReactJS, Looker
-
-- Spearheaded the development of a highly scalable record management system tailored for emergency services software, enabling quick and reliable access to critical information.
-- Successfully reduced operational costs by 30% through optimizing cloud resources and improving the efficiency of MySQL database queries.
-- Reduced ElasticSearch cluster capacity by roughly 40% (2TB+) without deleting any customer-facing data by fine-tuning indexing and shard allocation strategies.
-- Led the team in building an automated reporting system, allowing real-time insights for faster decision-making across government and healthcare sectors.
-- Introduced a new caching mechanism for Redis to handle high-volume real-time data streams more efficiently.
-- Implemented a robust backup and disaster recovery strategy to ensure data availability and minimize downtime.
-
-<<<
+- Scaled LLM-powered underwriting platform (50K+ loans/day).
+- Built HIPAA-compliant telemedicine API with 30% faster throughput.
+- Designed Wasm modules with Rust/C++, deployed via wasmer AOT.
+- Firecracker MicroVMs + NixOS infra: 5ms boot, 0 CVEs.
+- Created serverless edge functions with <100ms latency.
 
 === **Kore.ai**  
-*Technical Architect, December 2019 -- July 2020*
+*Technical Architect, 2016 -- 2018*
 
-Environment: Python, NodeJS, ExpressJS, ReactJS, MongoDB, Looker, Heroku, Stitch, Docker, RDS
+- Designed NLP pipelines for chatbot platform handling 10M+ messages/month with 92% accuracy.
+- Migrated to AWS EKS, cutting infra costs by 40%.
+- Integrated NLP/NLU for 50+ Fortune 500 clients.
 
-- Led scrum, planning, grooming, and retrospective meetings more effectively, ensuring project deliverables were met on time.
-- Set up local development environments for the team using Docker Compose and Selenium end-to-end testing, streamlining the development and testing process.
-- Built out a new CloudFormation ECS service stack to migrate cloud providers, reducing costs and improving scalability.
-- Helped build a new API for a rent guarantee claims service, streamlining claims processing and reducing operational overhead.
-- Secured AWS accounts with IAM stack groups and policies, adhering to industry best practices and ensuring compliance.
-- Reduced AWS costs from $250 to $40 USD per day, saving the company over $75,000 USD annually by optimizing infrastructure and scaling resources based on demand.
-- Improved Looker NoSQL-to-SQL integration with Stitch by adding MongoDB indices, increasing query performance.
-- Led an initiative to overhaul Looker analytics, enhancing the company's data visualization capabilities and decision-making.
+=== **Target Corporation**  
+*Lead Consultant, 2015 -- 2016*
 
-=== **Target Corp**  
-*Lead Consultant/ Technical Architect, August 2017 -- December 2019*
-
-Environment: Java, Looker, CloudFormation, EC2, ElastiCache, Redshift, Kinesis, Data Pipelines, RDS, DynamoDB, Hibernate, Liquibase, Spring
-
-- Automated zero-downtime deployment of REST API auto-scaling group rolling updates, improving application uptime and stability.
-- Decoupled monolithic deploys: increased stability and speed for deployments during peak traffic, enhancing system performance during critical sales periods.
-- Designed and rolled out a company-wide security policy for read-only and elevated user access, significantly reducing security risks.
-- Led a team web frontend refactor to help deliver a unified experience across the company’s multiple platforms.
-- Replaced existing geolocation integration for improved accuracy, saving the company $100,000 annually by reducing inaccurate geolocation data.
-- Delivered core product features on schedule, enabling custom analytics for customers.
-- Resolved outstanding REST API database throttling, improving API response times by over 30%.
-- Built in-house tooling to improve the developer and operations experience, increasing team productivity.
+- Scaled e-commerce (m.target.com) to 10M+ daily users during peak load.
+- Built adaptive mobile platform for consistent UX across devices.
 
 === **Polycom**  
-*Senior Staff Engineer, January 2016 -- August 2017*
+*Sr. Staff Engineer, 2012 -- 2015*
 
-Environment: Python, Flask, SQLAlchemy, Alembic, PostgreSQL, Memcached, Redis, Ansible, Vagrant
+- Architected CloudAxis WebRTC Suite for 1M+ concurrent video sessions.
 
-- Implemented REST API e-commerce features, improving customer experience and reducing friction in online purchases.
-- Optimized offers engine and added couponing functionality, leading to a 20% increase in sales conversions.
-- Provided on-call technical support for disaster recovery, ensuring system availability during critical incidents.
-- Delivered hot-fix solutions to comply with service-level agreements, maintaining high service availability and customer satisfaction.
-- First to assess and troubleshoot issues affecting customer e-commerce experience, ensuring minimal downtime.
-- Prepared and deployed new software releases to staging and production environments, ensuring smooth transitions and minimal disruptions.
-- Coordinated downtime and hardware upgrades for retailer environments, minimizing impact on end-users.
+=== **AT&T (USA)**  
+*PHP Web Developer, 2007 -- 2008*
 
-<<<
+- Built in-house CMS (5M+ pages), integrated telecom APIs.
+
+=== **Clearwire (USA)**  
+*Web Developer, 2008 -- 2009*
+
+- Developed WiMAX RESTful APIs & Google Maps store locator.
+
+=== **Chevron (USA)**  
+*Sr. Web Developer, 2009 -- 2011*
+
+- Created SAP xMII refinery dashboards handling 10TB/day sensor data.
+
+=== **HealthPlan Services (USA)**  
+*Web Developer, 2009*
+
+- Built broker portal for HIPAA-compliant insurance enrollments (250K+/year).
+
+=== **Visa Inc. (USA)**  
+*Web Developer, 2005 -- 2007*
+
+- Automated PCI-DSS compliance for $50B+ transaction platform.
+
+=== **State Street Inc. (USA)**  
+*System Developer, 2005*
+
+- Optimized risk modeling (Matlab) for security transactions.
 
 == Education  
 [horizontal]  
@@ -156,23 +134,11 @@ Anna University, Chennai, Tamil Nadu, India
 
 == Certifications  
 [horizontal]  
-AWS Certified Developer -- Associate 2018 +  
-
-[horizontal]  
-Programming Mobile Services for Android Handheld Systems -- Communication 2016 :: Coursera Course Certificates +  
-Participated  
-
-[horizontal]  
-Programming Mobile Services for Android Handheld Systems -- Part 2, 2015 :: Coursera Course Certificates +  
-Participated  
-
-[horizontal]  
-Programming Mobile Services for Android Handheld Systems -- Part 1, 2015 :: Coursera Course Certificates +  
-Participated  
+Cilium Getting Started :: Isovalent +  
+Credly Badge:: https://www.credly.com/badges/c9640487-19cc-4b24-b681-9559a8bae970/linked_in_profile[@Certified by Isovalent]
 
 == Additional Information
 
-- **Open Source Contributor**: Contributed to several open-source projects related to cloud computing, microservices, and DevOps tooling.  
-- **Languages**: Fluent in English, Tamil; conversational in Hindi.  
-- **Personal Projects**: Developed a personal project focused on AI-powered code review tools, helping developers maintain high code quality.
-
+- **Open Source Contributor**: CNCF, Cilium, GitHub/GitLab ecosystem.
+- **Tech Blogger**: http://byteshiva.medium.com[@*Tech Mastery: Learn Hands-On*]
+- **Dev Projects**: High-performance edge systems, AI chatbots, DevOps tools.
