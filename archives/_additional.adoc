@@ -1,0 +1,5 @@
+== Additional Information
+
+- **Open Source Contributor**: CNCF, Cilium, GitHub/GitLab ecosystem.
+- **Tech Blogger**: http://byteshiva.medium.com[@*Tech Mastery: Learn Hands-On*]
+- **Dev Projects**: High-performance edge systems, AI chatbots, DevOps tools.

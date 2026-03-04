@@ -1,0 +1,41 @@
+== Technical Skills
+
+[%rotate,cols="4*",frame=none,grid=rows]
+|===
+
+|
+|★★★★★ (5/5)
+|★★★★☆ (4/5)
+|★★★☆☆ (3/5)
+
+|AI & ML
+|LLMs (GPT-4, Claude)
+|PyTorch, TensorFlow
+|NLP/NLU
+
+|Languages
+|Go, Python, Rust
+|Bash, PHP
+|JavaScript
+
+|Backend
+|Serverless (WASM, Lambda)
+|Firecracker, Docker, WASI
+|Microservices
+
+|Frontend
+|React, Bootstrap
+|Tailwind
+|jQuery
+
+|Cloud & Infra
+|AWS/GCP, NixOS
+|Kubernetes, Docker
+|CI/CD, Observability
+
+|Security
+|HIPAA, PCI-DSS
+|Zero-trust (WASI, sandboxing)
+|OAuth2, TLS, CVE-free deployments
+
+|===

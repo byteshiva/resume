@@ -1,0 +1,4 @@
+== Certifications
+[horizontal]
+Cilium Getting Started :: Isovalent +
+Credly Badge:: https://www.credly.com/badges/c9640487-19cc-4b24-b681-9559a8bae970/linked_in_profile[@Certified by Isovalent]
