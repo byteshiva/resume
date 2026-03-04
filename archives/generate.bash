@@ -21,3 +21,5 @@ time asciidoctor-pdf \
     -a pdf-fontsdir=fonts \
         latest.adoc
 echo
+
+cp latest.html index.html
