@@ -1,6 +1,0 @@
-== Education
-[horizontal]
-Bachelor of Computer Science :: University of Madras +
-Chennai, Tamil Nadu, India
-Master of Software Engineering :: College of Engineering, Guindy, +
-Anna University, Chennai, Tamil Nadu, India
