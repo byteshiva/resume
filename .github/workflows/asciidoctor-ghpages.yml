@@ -1,8 +1,9 @@
-name: Build and Deploy Resumes
+name: Build and Deploy Site
 
 on:
   push:
-    branches: [ master, main ]
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -11,33 +12,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build and Deploy with manoelcampos/asciidoctor-ghpages-action
-        uses: manoelcampos/asciidoctor-ghpages-action@v2
+      - name: Setup Ruby and Asciidoctor
+        uses: ruby/setup-ruby@v1
         with:
-          # This action only processes .adoc files by default. We will handle ALL file
-          # operations in the post_build step for clarity and control.
-          asciidoctor_params: '--attribute=nofooter'
+          ruby-version: '3.1'
+      - name: Install Asciidoctor and dependencies
+        run: |
+          gem install asciidoctor
+          gem install asciidoctor-pdf
+          gem install asciidoctor-diagram
 
-          post_build: |
-            # The build action runs in a temporary dir. We copy our source files into it.
-            # $GITHUB_WORKSPACE is a reliable absolute path to the repository root.
-            cp $GITHUB_WORKSPACE/dashboard.html .
-            cp $GITHUB_WORKSPACE/resumes.json .
-            cp -r $GITHUB_WORKSPACE/themes .
-            cp $GITHUB_WORKSPACE/latest.adoc .
-            cp -r $GITHUB_WORKSPACE/tailored_resumes .
+      - name: Build Site
+        run: |
+          # Create the output directory
+          mkdir public
+          
+          # Build all AsciiDoc files into HTML
+          asciidoctor -B . -D public -r asciidoctor-diagram tailored_resumes/*.adoc -a stylesheet=themes/resume.css --attribute=nofooter
+          asciidoctor -B . -D public -r asciidoctor-diagram -o index.html latest.adoc -a stylesheet=themes/resume.css --attribute=nofooter
+          
+          # Build the PDF for the latest resume
+          asciidoctor-pdf -B . -D public -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
 
-            # Build all AsciiDoc files into HTML
-            asciidoctor -B . -D . -a stylesheet=themes/resume.css tailored_resumes/*.adoc
-            asciidoctor -B . -D . -a stylesheet=themes/resume.css latest.adoc -o index.html
-            
-            # Build the PDF for the latest resume
-            asciidoctor-pdf -B . -D . -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
+          # Copy the static files into the public directory
+          cp dashboard.html public/dashboard.html
+          cp resumes.json public/resumes.json
+          cp -r themes public/themes
 
-            # Final verification of files to be deployed
-            echo "--- Deploying Files: ---"
-            ls -R
-            echo "-----------------------"
-
-            # Add all generated and static files to the gh-pages commit
-            git add -f *.html *.pdf *.json themes
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
