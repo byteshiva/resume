@@ -1,0 +1,22 @@
+name: Deploy Tailored Resumes
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Convert adoc to html and publish to gh-pages
+      uses: manoelcampos/asciidoctor-ghpages-action@v2
+      with:
+        asciidoctor_params: '-a stylesheet=themes/resume.css -a stylesdir=./ --attribute=nofooter'
+        pre_build: 'mkdir -p tailored_html'
+        post_build: |
+          for f in tailored_resumes/*.adoc; do
+            filename=$(basename -- "$f")
+            filename_noext="${filename%.*}"
+            asciidoctor -a stylesheet=themes/resume.css -a stylesdir=./ -o tailored_html/$filename_noext.html $f
+          done
+          cp -r tailored_html/* .
+          git add -f *.html themes/resume.css
