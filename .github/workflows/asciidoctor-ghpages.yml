@@ -1,4 +1,3 @@
-
 name: Build and Deploy Resumes
 
 on:
@@ -15,23 +14,30 @@ jobs:
       - name: Build and Deploy with manoelcampos/asciidoctor-ghpages-action
         uses: manoelcampos/asciidoctor-ghpages-action@v2
         with:
-          # Base directory and theme for all .adoc files
-          asciidoctor_params: '-B . -a stylesheet=themes/resume.css --attribute=nofooter'
-          # Enable PDF build for the main file
-          pdf_build: true
-          ebook_main_adoc_file: 'latest'
+          # This action only processes .adoc files by default. We will handle ALL file
+          # operations in the post_build step for clarity and control.
+          asciidoctor_params: '--attribute=nofooter'
 
-          # Finalize site structure before deploying
           post_build: |
-            # Set latest.adoc as the root index.html, applying theme
-            asciidoctor -B . -a stylesheet=themes/resume.css latest.adoc -o index.html
-            
-            # Rebuild PDF to ensure custom theme is correctly applied
-            asciidoctor-pdf -B . -a pdf-stylesdir=themes -a pdf-style=resume latest.adoc -o latest.pdf
+            # The build action runs in a temporary dir. We copy our source files into it.
+            # $GITHUB_WORKSPACE is a reliable absolute path to the repository root.
+            cp $GITHUB_WORKSPACE/dashboard.html .
+            cp $GITHUB_WORKSPACE/resumes.json .
+            cp -r $GITHUB_WORKSPACE/themes .
+            cp $GITHUB_WORKSPACE/latest.adoc .
+            cp -r $GITHUB_WORKSPACE/tailored_resumes .
 
-            # Copy our static files into the build directory from the repo root
-            cp ../dashboard.html ./
-            cp ../resumes.json ./
+            # Build all AsciiDoc files into HTML
+            asciidoctor -B . -D . -a stylesheet=themes/resume.css tailored_resumes/*.adoc
+            asciidoctor -B . -D . -a stylesheet=themes/resume.css latest.adoc -o index.html
+            
+            # Build the PDF for the latest resume
+            asciidoctor-pdf -B . -D . -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
+
+            # Final verification of files to be deployed
+            echo "--- Deploying Files: ---"
+            ls -R
+            echo "-----------------------"
 
             # Add all generated and static files to the gh-pages commit
-            git add -f index.html latest.pdf dashboard.html resumes.json
+            git add -f *.html *.pdf *.json themes
