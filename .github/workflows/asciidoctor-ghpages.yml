@@ -21,11 +21,11 @@ jobs:
           ebook_main_adoc_file: 'latest'
           post_build: |
             # Build all AsciiDoc files into HTML
-            asciidoctor -B . -D . -a stylesheet=themes/resume.css tailored_resumes/*.adoc
-            asciidoctor -B . -D . -a stylesheet=themes/resume.css latest.adoc -o index.html
+            asciidoctor -B . -D . tailored_resumes/*.adoc
+            asciidoctor -B . -D . latest.adoc -o index.html
             
             # Build the PDF for the latest resume
-            asciidoctor-pdf -B . -D . -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
+            asciidoctor-pdf -B . -D . -o latest.pdf latest.adoc
 
             # Final verification of files to be deployed
             echo "--- Deploying Files: ---"
