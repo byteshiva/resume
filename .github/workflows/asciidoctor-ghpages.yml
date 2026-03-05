@@ -1,31 +1,57 @@
-name: asciidoctor-ghpages
+name: Build and Deploy Resumes
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
+    branches:
+      - main
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v3
-      
-    # Includes the AsciiDoctor GitHub Pages Action to convert adoc files to html and publish to gh-pages branch
-    - name: asciidoctor-ghpages
-      uses: manoelcampos/asciidoctor-ghpages-action@v2
-      with:
-        asciidoctor_params: --attribute=nofooter
-        pdf_build: true
-        ebook_main_adoc_file: 'latest'
-        post_build: 'asciidoctor latest.adoc -o index.html;touch index.html; pwd; ls -lrt; git add -f index.html'
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
+      - name: Setup Ruby and Asciidoctor
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+      - name: Install Asciidoctor
+        run: gem install asciidoctor
+      - name: Install Asciidoctor PDF
+        run: gem install asciidoctor-pdf
+
+      - name: Build site
+        run: |
+          mkdir public
+          echo '{"resumes":[' > public/resumes.json
+          FIRST=true
+          for f in tailored_resumes/*.adoc; do
+            if [ "$FIRST" = false ]; then
+              echo ',' >> public/resumes.json
+            fi
+            FILENAME=$(basename -- "$f")
+            FILENAME_NOEXT="${FILENAME%.*}"
+            TITLE=$(grep '^= ' "$f" | sed 's/^= //' | sed 's/\"/\"/g')
+            HTML_FILE="$FILENAME_NOEXT.html"
+            
+            asciidoctor -D public -o $HTML_FILE $f -a stylesheet=themes/resume.css --attribute=nofooter
+            
+            printf '{"title":"%s", "url":"%s"}' "$TITLE" "$HTML_FILE" >> public/resumes.json
+            FIRST=false
+          done
+          # Also process latest.adoc
+          asciidoctor -D public -o latest.html latest.adoc -a stylesheet=themes/resume.css --attribute=nofooter
+          asciidoctor-pdf -D public -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
+          printf ',{"title":"Latest Resume (HTML)", "url":"latest.html"}' >> public/resumes.json
+          printf ',{"title":"Latest Resume (PDF)", "url":"latest.pdf"}' >> public/resumes.json
+          echo ']}' >> public/resumes.json
+          
+          cp dashboard.html public/index.html
+          cp -r themes public/themes
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
