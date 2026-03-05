@@ -1,4 +1,4 @@
-name: Build and Deploy Resumes
+name: Build and Deploy Site
 
 on:
   push:
@@ -16,12 +16,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
-      - name: Install Asciidoctor
-        run: gem install asciidoctor
-      - name: Install Asciidoctor PDF
-        run: gem install asciidoctor-pdf
+      - name: Install Asciidoctor and PDF Generator
+        run: |
+          gem install asciidoctor
+          gem install asciidoctor-pdf
 
-      - name: Build site
+      - name: Build Site
         run: |
           mkdir public
           echo '{"resumes":[' > public/resumes.json
@@ -35,18 +35,23 @@ jobs:
             TITLE=$(grep '^= ' "$f" | sed 's/^= //' | sed 's/\"/\"/g')
             HTML_FILE="$FILENAME_NOEXT.html"
             
-            asciidoctor -D public -o $HTML_FILE $f -a stylesheet=themes/resume.css --attribute=nofooter
+            # Use -B . to set the base directory, ensuring themes are found
+            asciidoctor -B . -D public -o $HTML_FILE $f -a stylesheet=themes/resume.css --attribute=nofooter
             
             printf '{"title":"%s", "url":"%s"}' "$TITLE" "$HTML_FILE" >> public/resumes.json
             FIRST=false
           done
-          # Also process latest.adoc
-          asciidoctor -D public -o latest.html latest.adoc -a stylesheet=themes/resume.css --attribute=nofooter
-          asciidoctor-pdf -D public -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
+          
+          # Also process latest.adoc, using -B . to find themes
+          asciidoctor -B . -D public -o latest.html latest.adoc -a stylesheet=themes/resume.css --attribute=nofooter
+          asciidoctor-pdf -B . -D public -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
+          
+          # Add latest resumes to the JSON file
           printf ',{"title":"Latest Resume (HTML)", "url":"latest.html"}' >> public/resumes.json
           printf ',{"title":"Latest Resume (PDF)", "url":"latest.pdf"}' >> public/resumes.json
           echo ']}' >> public/resumes.json
           
+          # Copy dashboard and themes to the public directory
           cp dashboard.html public/index.html
           cp -r themes public/themes
 
