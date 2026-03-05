@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Dashboard</title>
+</head>
+<body>
+  <h1>Resume Dashboard</h1>
+  <ul id="resume-list"></ul>
+
+  <script>
+    fetch('resumes.json')
+      .then(response => response.json())
+      .then(data => {
+        const resumeList = document.getElementById('resume-list');
+        data.resumes.forEach(resume => {
+          const listItem = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = resume.url;
+          link.textContent = resume.title;
+          listItem.appendChild(link);
+          resumeList.appendChild(listItem);
+        });
+      });
+  </script>
+</body>
+</html>
