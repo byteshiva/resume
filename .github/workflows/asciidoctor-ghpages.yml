@@ -1,29 +1,37 @@
-name: asciidoctor-ghpages
+
+name: Build and Deploy Resumes
 
 on:
   push:
     branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build and Deploy to GitHub Pages
-      uses: manoelcampos/asciidoctor-ghpages-action@v2
-      with:
-        # Parameters for converting all .adoc files
-        asciidoctor_params: '-B . -a stylesheet=themes/resume.css --attribute=nofooter'
-        pdf_build: true
-        # Main file for PDF generation
-        ebook_main_adoc_file: 'latest'
-        # Commands to run after the action builds all files, but before deploying
-        post_build: |
-          # Set latest.adoc as the root index.html, with styling
-          asciidoctor -B . -a stylesheet=themes/resume.css latest.adoc -o index.html
-          # Rebuild the PDF with the custom theme
-          asciidoctor-pdf -B . -a pdf-stylesdir=themes -a pdf-style=resume latest.adoc -o latest.pdf
-          # Add the generated root files to the deploy commit
-          git add -f index.html latest.pdf
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build and Deploy with manoelcampos/asciidoctor-ghpages-action
+        uses: manoelcampos/asciidoctor-ghpages-action@v2
+        with:
+          # Base directory and theme for all .adoc files
+          asciidoctor_params: '-B . -a stylesheet=themes/resume.css --attribute=nofooter'
+          # Enable PDF build for the main file
+          pdf_build: true
+          ebook_main_adoc_file: 'latest'
+
+          # Finalize site structure before deploying
+          post_build: |
+            # Set latest.adoc as the root index.html, applying theme
+            asciidoctor -B . -a stylesheet=themes/resume.css latest.adoc -o index.html
+            
+            # Rebuild PDF to ensure custom theme is correctly applied
+            asciidoctor-pdf -B . -a pdf-stylesdir=themes -a pdf-style=resume latest.adoc -o latest.pdf
+
+            # Copy our static files into the build directory from the repo root
+            cp ../dashboard.html ./
+            cp ../resumes.json ./
+
+            # Add all generated and static files to the gh-pages commit
+            git add -f index.html latest.pdf dashboard.html resumes.json
