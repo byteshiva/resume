@@ -1,36 +1,50 @@
-name: Deploy Tailored Resumes
+name: Build and Deploy Resumes
+
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Convert adoc to html and publish to gh-pages
-      uses: manoelcampos/asciidoctor-ghpages-action@v2
-      with:
-        asciidoctor_params: '-a stylesheet=themes/resume.css -a stylesdir=./ --attribute=nofooter'
-        post_build: |
-          mkdir -p tailored_html
-          echo '{"resumes":[' > tailored_html/resumes.json
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby and Asciidoctor
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+      - name: Install Asciidoctor
+        run: gem install asciidoctor
+
+      - name: Build site
+        run: |
+          mkdir public
+          echo '{"resumes":[' > public/resumes.json
           FIRST=true
           for f in tailored_resumes/*.adoc; do
             if [ "$FIRST" = false ]; then
-              echo ',' >> tailored_html/resumes.json
+              echo ',' >> public/resumes.json
             fi
             FILENAME=$(basename -- "$f")
             FILENAME_NOEXT="${FILENAME%.*}"
-            TITLE=$(grep '^= ' "$f" | sed 's/^= //' | sed 's/"/\\"/g')
+            TITLE=$(grep '^= ' "$f" | sed 's/^= //' | sed 's/\"/\"/g')
             HTML_FILE="$FILENAME_NOEXT.html"
             
-            asciidoctor -a stylesheet=themes/resume.css -a stylesdir=./ --attribute=nofooter -o tailored_html/$HTML_FILE $f
+            asciidoctor -D public -o $HTML_FILE $f -a stylesheet=themes/resume.css --attribute=nofooter
             
-            printf '{"title":"%s", "url":"%s"}' "$TITLE" "$HTML_FILE" >> tailored_html/resumes.json
+            printf '{"title":"%s", "url":"%s"}' "$TITLE" "$HTML_FILE" >> public/resumes.json
             FIRST=false
           done
-          echo ']}' >> tailored_html/resumes.json
+          echo ']}' >> public/resumes.json
           
-          cp -r tailored_html/* .
-          
-          git add -f *.html resumes.json themes/resume.css
+          cp dashboard.html public/index.html
+          cp -r themes public/themes
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
