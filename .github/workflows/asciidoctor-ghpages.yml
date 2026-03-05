@@ -17,16 +17,9 @@ jobs:
           # This action only processes .adoc files by default. We will handle ALL file
           # operations in the post_build step for clarity and control.
           asciidoctor_params: '--attribute=nofooter'
-
+          pdf_build: true
+          ebook_main_adoc_file: 'latest'
           post_build: |
-            # The build action runs in a temporary dir. We copy our source files into it.
-            # $GITHUB_WORKSPACE is a reliable absolute path to the repository root.
-            # cp $GITHUB_WORKSPACE/dashboard.html .
-            # cp $GITHUB_WORKSPACE/resumes.json .
-            # cp -r $GITHUB_WORKSPACE/themes .
-            # cp $GITHUB_WORKSPACE/latest.adoc .
-            # cp -r $GITHUB_WORKSPACE/tailored_resumes .
-
             # Build all AsciiDoc files into HTML
             asciidoctor -B . -D . -a stylesheet=themes/resume.css tailored_resumes/*.adoc
             asciidoctor -B . -D . -a stylesheet=themes/resume.css latest.adoc -o index.html
