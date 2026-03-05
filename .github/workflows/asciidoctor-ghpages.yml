@@ -23,9 +23,9 @@ jobs:
             # $GITHUB_WORKSPACE is a reliable absolute path to the repository root.
             # cp $GITHUB_WORKSPACE/dashboard.html .
             # cp $GITHUB_WORKSPACE/resumes.json .
-            cp -r $GITHUB_WORKSPACE/themes .
-            cp $GITHUB_WORKSPACE/latest.adoc .
-            cp -r $GITHUB_WORKSPACE/tailored_resumes .
+            # cp -r $GITHUB_WORKSPACE/themes .
+            # cp $GITHUB_WORKSPACE/latest.adoc .
+            # cp -r $GITHUB_WORKSPACE/tailored_resumes .
 
             # Build all AsciiDoc files into HTML
             asciidoctor -B . -D . -a stylesheet=themes/resume.css tailored_resumes/*.adoc
