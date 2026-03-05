@@ -33,7 +33,7 @@ jobs:
       env:
           telegram_text: ${{ on.telegram_bot.outputs.text }}
           from_firstbame: ${{ on.telegram_bot.outputs.from.first_name }}
-      uses: appleboy/telegram-action@v0.1.1
+      uses: appleboy/telegram-action@v1.0.1
       with:
         to: ${{ on.telegram_bot.outputs.from.id }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
@@ -43,13 +43,13 @@ jobs:
                 more features in pipeline, NLP, Resume Parser
                 Thanks ${{ on.telegram_bot.outputs.from.first_name }}, I got your message ${{ on.telegram_bot.outputs.text }} 
     - name: send custom message with args
-      uses: appleboy/telegram-action@v0.1.1
+      uses: appleboy/telegram-action@v1.0.1
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         args: The ${{ github.event_name }} event triggered first step.
     - name: copy to owner log messages
-      uses: appleboy/telegram-action@v0.1.1
+      uses: appleboy/telegram-action@v1.0.1
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
