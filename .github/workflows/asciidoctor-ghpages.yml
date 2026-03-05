@@ -1,62 +1,29 @@
-name: Build and Deploy Site
+name: asciidoctor-ghpages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Ruby and Asciidoctor
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.1'
-      - name: Install Asciidoctor and PDF Generator
-        run: |
-          gem install asciidoctor
-          gem install asciidoctor-pdf
-
-      - name: Build Site
-        run: |
-          mkdir public
-          echo '{"resumes":[' > public/resumes.json
-          FIRST=true
-          for f in tailored_resumes/*.adoc; do
-            if [ "$FIRST" = false ]; then
-              echo ',' >> public/resumes.json
-            fi
-            FILENAME=$(basename -- "$f")
-            FILENAME_NOEXT="${FILENAME%.*}"
-            TITLE=$(grep '^= ' "$f" | sed 's/^= //' | sed 's/\"/\"/g')
-            HTML_FILE="$FILENAME_NOEXT.html"
-            
-            # Use -B . to set the base directory, ensuring themes are found
-            asciidoctor -B . -D public -o $HTML_FILE $f -a stylesheet=themes/resume.css --attribute=nofooter
-            
-            printf '{"title":"%s", "url":"%s"}' "$TITLE" "$HTML_FILE" >> public/resumes.json
-            FIRST=false
-          done
-          
-          # Also process latest.adoc, using -B . to find themes
-          asciidoctor -B . -D public -o latest.html latest.adoc -a stylesheet=themes/resume.css --attribute=nofooter
-          asciidoctor-pdf -B . -D public -o latest.pdf latest.adoc -a pdf-themesdir=themes -a pdf-theme=resume
-          
-          # Add latest resumes to the JSON file
-          printf ',{"title":"Latest Resume (HTML)", "url":"latest.html"}' >> public/resumes.json
-          printf ',{"title":"Latest Resume (PDF)", "url":"latest.pdf"}' >> public/resumes.json
-          echo ']}' >> public/resumes.json
-          
-          # Copy dashboard and themes to the public directory
-          cp dashboard.html public/index.html
-          cp -r themes public/themes
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+    - uses: actions/checkout@v3
+    - name: Build and Deploy to GitHub Pages
+      uses: manoelcampos/asciidoctor-ghpages-action@v2
+      with:
+        # Parameters for converting all .adoc files
+        asciidoctor_params: '-B . -a stylesheet=themes/resume.css --attribute=nofooter'
+        pdf_build: true
+        # Main file for PDF generation
+        ebook_main_adoc_file: 'latest'
+        # Commands to run after the action builds all files, but before deploying
+        post_build: |
+          # Set latest.adoc as the root index.html, with styling
+          asciidoctor -B . -a stylesheet=themes/resume.css latest.adoc -o index.html
+          # Rebuild the PDF with the custom theme
+          asciidoctor-pdf -B . -a pdf-stylesdir=themes -a pdf-style=resume latest.adoc -o latest.pdf
+          # Add the generated root files to the deploy commit
+          git add -f index.html latest.pdf
